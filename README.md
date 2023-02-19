@@ -8,13 +8,13 @@ MiniP-OS is a pet project to learn basic OSDev I have started several times, to 
 
 ## Implemented Features:
 - [X] Boots
-- [] GDT
-- [] Memory Map
-- [] Interrupts
-- [] Memory Manager
-- [] Keyboard
-- [] Console
-- [] System Calls
+- [ ] GDT
+- [ ] Memory Map
+- [ ] Interrupts
+- [ ] Memory Manager
+- [ ] Keyboard
+- [ ] Console
+- [ ] System Calls
 
 ## How to Compile:
 - Build GCC crosscompiler + binutils for i686
