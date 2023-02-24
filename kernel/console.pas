@@ -173,7 +173,7 @@ begin
     end;
 
     repeat
-        Dec(str);
+        dec(str);
         str^ := Char((digit mod 10) + Byte('0'));
         digit := digit div 10;
     until (digit = 0);

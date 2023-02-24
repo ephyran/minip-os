@@ -10,7 +10,8 @@ procedure _main(binfo: Pboot_info_t; bmagic: DWORD); stdcall;
 implementation
 
 uses
-    console;
+    console,
+    strutils;
 
 procedure _main(binfo: Pboot_info_t; bmagic: DWORD); stdcall; [public, alias: '_main'];
 var
