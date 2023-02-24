@@ -15,12 +15,16 @@ SECTIONS {
     }
     . += KERNELHIGH;
     .text ALIGN (0x1000) : AT (ADDR (.text) - KERNELHIGH) {
+        _text_start = .;
         text = .; _text = .; __text = .;
         *(.text)
+        _text_end = .;
     }
     .rodata ALIGN (0x1000) : AT (ADDR (.rodata) - KERNELHIGH) {
+        _rodata_start = .;
         rodata = .; _rodata = .; __rodata = .;
         *(.rodata)
+        _rodata_end = .;
     }
     .data ALIGN (0x1000) : AT (ADDR (.data) - KERNELHIGH) {
         data = .; _data = .; __data = .;
