@@ -58,6 +58,8 @@ _mapKernel:
     cmpl    $(_rodata_start - 0xC0000000), %esi
     jg      _isInRodataRange
 
+    jmp     _endIfWritable
+
 _isInTextRange:
     cmpl    $(_text_end - 0xC0000000), %esi         # If at end of text section...
     jge     _endIfWritable                          # Jump to end of if
