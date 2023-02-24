@@ -52,25 +52,12 @@ _mapKernel:
     orl     $0x003, %edx
     movl    %edx, (%edi)
 
-    cmpl    $(_text_start - 0xC0000000), %esi
-    jg      _isInTextRange
+    cmpl    $(_no_rw_start - 0xC0000000), %esi
+    jng     _endIfWritable
 
-    cmpl    $(_rodata_start - 0xC0000000), %esi
-    jg      _isInRodataRange
+    cmpl    $(_no_rw_end - 0xC0000000), %esi
+    jnle    _endIfWritable
 
-    jmp     _endIfWritable
-
-_isInTextRange:
-    cmpl    $(_text_end - 0xC0000000), %esi         # If at end of text section...
-    jge     _endIfWritable                          # Jump to end of if
-    jmp     _isNotWritable                          # Otherwise set RW bit to 0
-
-_isInRodataRange:
-    cmpl    $(_rodata_end - 0xC0000000), %esi       # If at end of rodata section...
-    jge     _endIfWritable                          # Jump to end of if
-    jmp     _isNotWritable                          # Otherwise set RW bit to 0
-
-_isNotWritable:
     movl    %esi, %edx
     orl     $0x001, %edx
     movl    %edx, (%edi)

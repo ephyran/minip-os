@@ -14,29 +14,23 @@ SECTIONS {
         *(.multiboot.text)
     }
     . += KERNELHIGH;
+    _no_rw_start = .;
     .text ALIGN (0x1000) : AT (ADDR (.text) - KERNELHIGH) {
-        _text_start = .;
         text = .; _text = .; __text = .;
         *(.text)
-        _text_end = .;
+        kimage_text = .;
+        LONG(text);
     }
     .rodata ALIGN (0x1000) : AT (ADDR (.rodata) - KERNELHIGH) {
-        _rodata_start = .;
         rodata = .; _rodata = .; __rodata = .;
         *(.rodata)
-        _rodata_end = .;
     }
+    _no_rw_end = .;
     .data ALIGN (0x1000) : AT (ADDR (.data) - KERNELHIGH) {
         data = .; _data = .; __data = .;
         *(.data)
-        kimage_text = .;
-        LONG(text);
         kimage_data = .;
         LONG(data);
-        kimage_bss = .;
-        LONG(bss);
-        kimage_end = .;
-        LONG(end);
     }
     .multiboot.data : {
         *(.multiboot.data)
@@ -45,6 +39,10 @@ SECTIONS {
         bss = .; _bss = .; __bss = .;
         *(COMMON)
         *(.bss)
+        kimage_bss = .;
+        LONG(bss);
+        kimage_end = .;
+        LONG(end);
         *(.stack)
     }
     end = .; _end = .; __end = .;
