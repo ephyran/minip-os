@@ -4,7 +4,8 @@
 MiniP-OS is a pet project to learn basic OSDev I have started several times, to varying degrees of success. This repo contains my most recent attempt, started as of November 2022. This is unlikely to go anywhere, as it is a personal research project. Any recommendations or suggestions are welcome, however, as I am very much new to operating system architecture!
 
 ## Current State:
-<img src="res/currentstate.png" width="300">
+<img src="res/currentstate.png" width="300" height="210">
+<img src="res/meminfo.png" width="300" height="210">
 
 ## Implemented Features:
 - [X] Boots
