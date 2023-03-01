@@ -9,7 +9,7 @@ PASDIRS = -Fukernel/memory -Fukernel/console -Fukernel/utils
 
 ASPARAMS = -g -o $(KERNELBUILDDIR)/init.o
 CCPARAMS = -g -T $(KERNELDIR)/arch/i686/linker.ld -o kernel.bin -ffreestanding -fno-pic -O2 -nostdlib
-FPCPARAMS = -Aelf -n -O2 -Op3 -Si -Sc -Sg -Xd -CX -XX -Pi386 -Rintel $(PASDIRS) -FU$(KERNELBUILDDIR)
+FPCPARAMS = -Aelf -n -O2 -Op3 -Si -Sc -Sg -Xd -CX -XX -Pi386 -Rintel $(PASDIRS) -FU$(KERNELBUILDDIR) -dARCH_i686 -dCONSOLE_MODE_VGA
 
 objects = $(KERNELBUILDDIR)/*.o
 
